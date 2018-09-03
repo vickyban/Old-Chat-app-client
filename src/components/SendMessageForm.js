@@ -6,14 +6,16 @@ class SendMessageForm extends Component {
 
   submitHandle = e => {
     e.preventDefault();
-    const { dispatch, message } = this.props;
+    const { dispatch, message, sendMessage } = this.props;
+    const data = {
+      ...message,
+      timestamp: Date.now()
+    }
     dispatch({
       type: "SEND",
-      data: {
-        ...message,
-        timestamp: Date.now()
-      }
-    })
+      data,
+    });
+    sendMessage(data);
   };
 
   changeHandle = e => {

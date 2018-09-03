@@ -17,6 +17,11 @@ export default function (state = initialState, action) {
         messages: [...state.messages, data],
         message: {}
       }
+    case "New_Message":
+      return {
+        ...state,
+        messages: [...state.messages, data],
+      }
     default:
       return state;
   }
