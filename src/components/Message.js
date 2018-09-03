@@ -1,11 +1,10 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-export default class Message extends Component {
-  render() {
-    return (
-      <div>
+const Message = ({ message: { author, text, timestamp } }) => (
+  <div className="message" >
+    <p>{`${author} at ${(new Date(timestamp)).toLocaleTimeString()}`}</p>
+    <p>{text}</p>
+  </div>
+);
 
-      </div>
-    )
-  }
-}
+export default Message;

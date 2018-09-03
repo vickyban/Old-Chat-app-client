@@ -1,11 +1,20 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import Message from './Message';
 
-export default class MessageList extends Component {
+class MessageList extends Component {
   render() {
+    const { messages } = this.props;
     return (
       <div id="chat-box">
-        <h2>Chat box</h2>
+        {messages.map(message => <Message message={message} key={message.timestamp} />)}
       </div>
     )
   }
 }
+
+const mapStateToProps = state => ({
+  messages: state.messages.messages
+});
+
+export default connect(mapStateToProps)(MessageList);
