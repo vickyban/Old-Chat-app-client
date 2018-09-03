@@ -1,0 +1,16 @@
+
+#room-list { grid-area: room-list; }
+#chat-box { grid-area: chat-box; }
+#new-room-form { grid-area: new-room; }
+#chat-form { grid-area: chat-form; }
+
+.grid-container {
+  display: grid;
+  grid-template-areas:
+    'room-list chat-box chat-box chat-box '
+    'room-list chat-box chat-box chat-box '
+    'new-room  chat-form chat-form chat-form';
+  grid-gap: 10px;
+  background-color: #2196F3;
+  padding: 10px;
+}
