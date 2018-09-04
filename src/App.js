@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import './App.css';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import SocketIoClient from 'socket.io-client';
 
-import { MessageList, NewRoomForm, RoomList, SendMessageForm } from './components';
+import { MessageList, NewRoomForm, RoomList, SendMessageForm, LoginModal, Toggle } from './components';
 import { updateMessages, CONSTANTS, addTypingUser, removeTypingUser } from './actions/messageAction';
 
 
@@ -36,21 +36,28 @@ class App extends Component {
   }
 
   render() {
+    const { isLogin } = this.props;
     return (
-      <div className="grid-container">
-        <RoomList />
-        <MessageList />
-        <NewRoomForm />
-        <SendMessageForm
-          sendMessage={this.sendMessage}
-          updateTypingUser={this.updateTypingUser}
-        />
-      </div>
+      <Fragment>
+        <div className="grid-container">
+          <RoomList />
+          <MessageList />
+          <NewRoomForm />
+          <SendMessageForm
+            sendMessage={this.sendMessage}
+            updateTypingUser={this.updateTypingUser}
+          />
+
+        </div>
+        {!isLogin && <LoginModal />}
+      </Fragment>
     );
   }
 }
 
-const mapStateToProps = state => ({ ...state });
+const mapStateToProps = state => ({
+  isLogin: state.user.isLogin
+});
 
 const mapDispatchToProps = dispatch => bindActionCreators({
   updateMessages,
