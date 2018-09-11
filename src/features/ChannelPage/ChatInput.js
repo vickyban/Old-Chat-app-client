@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { updateMessages, setTypingState } from '../actions/messageAction';
+import { updateMessages, setTypingState } from '../../actions/messageAction';
 
 
 
